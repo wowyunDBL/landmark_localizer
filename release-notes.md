@@ -4,8 +4,8 @@
 
 2021-09-08
 
-- Different mapping layer result
-- 
+- Add Kalman filter
+- Synchronize depth, color, odom rosmsg and save to npy
 
 
 ## Template for commit mdg

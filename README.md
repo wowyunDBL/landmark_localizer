@@ -6,7 +6,7 @@
 $ echo "export ROS_MASTER_URI=http://192.168.0.101:11311" >> ~/.bashrc
 $ echo "export ROS_HOSTNAME=192.168.0.103" >> ~/.bashrc
 ```
-.0.101 is IP for host
+.0.101 is IP for host  
 .0.103 is IP for slaver
 
 2. Source the bashrc with below command.
@@ -24,3 +24,19 @@ $ sudo echo "192.168.0.101 ${ROS_MASTER_NAME}" >> /etc/hosts
 $ pip install -r requirements.txt
 $ bash ./demo.sh
 ```
+
+## working tree
+├── CMakeLists.txt
+├── demo.sh
+├── include
+│   └── landmark_localizer
+├── install_librealsense.sh
+├── package.xml
+├── README.md
+├── release-notes.md
+├── requirements.txt
+├── scripts
+│   ├── cb_pose.py
+│   └── cb_topic2npy.py
+└── src
+
