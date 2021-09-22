@@ -25,6 +25,10 @@ $ pip install -r requirements.txt
 $ bash ./demo.sh
 ```
 
+## rosbag filter
+rosbag filter ChiaY_outerHalf_2021-08-17-17-17-10.bag lighter_ChiaY_outerHalf_2021-08-17-17-17-10.bag "topic=='/imu_filter/rpy/filtered' or topic=='/outdoor_waypoint_nav/odometry/filtered_map' or topic=='/outdoor_waypoint_nav/odometry/filtered' or topic=='/tf'"
+
+
 ## working tree
 ├── CMakeLists.txt
 ├── demo.sh
@@ -37,6 +41,6 @@ $ bash ./demo.sh
 ├── requirements.txt
 ├── scripts
 │   ├── cb_pose.py
-│   └── cb_topic2npy.py
+│   └── cb_topic2npy.py # file_naming: timestampSecs%1000+timestampNSecs/1e6
 └── src
 
