@@ -72,11 +72,11 @@ class Synchronize:
             yaw_rad = self.msgIMU/180*np.pi
             with open(file_path + 'cb_pose.csv', 'a') as csvfile: # or w
                 writer = csv.writer(csvfile)
-                writer.writerows([self.msgGPS.latitude, self.msgGPS.longitude, yaw_rad])
+                writer.writerow([self.msgGPS.latitude, self.msgGPS.longitude, yaw_rad]) 
             # np.save(file_path + "poseXYT/" + str(self.timestampSecs%1000)+'-'+str(int(self.timestampNSecs/1e6)), np.array([self.msgGPS.latitude, self.msgGPS.longitude, yaw_rad]))
             with open(file_path + 'index_timestamp.csv', 'a') as fp: # or w
                 writer = csv.writer(fp)
-                writer.writerows([self.file_index, str(self.timestampSecs%1000)+'-'+str(int(self.timestampNSecs/1e6))] )
+                writer.writerow([self.file_index, str(self.timestampSecs)+'.'+str(self.timestampNSecs)] )
 
             print("saved!")
             self.flagSaved = True
