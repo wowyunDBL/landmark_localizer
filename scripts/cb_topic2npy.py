@@ -62,7 +62,7 @@ class Synchronize:
         self.flagOdom = True
         
     def save(self):
-        if (self.flagDepth and self.flagColor and self.flagIMU and self.flagGPS) == True:
+        if (self.flagDepth and self.flagColor and self.flagIMU and self.flagOdom) == True:
             self.imgColor = msg2CV(self.msgColor)
             self.imgDepth = msg2CV(self.msgDepth)
             
@@ -72,7 +72,8 @@ class Synchronize:
             yaw_rad = self.msgIMU/180*np.pi
             with open(file_path + 'cb_pose.csv', 'a') as csvfile: # or w
                 writer = csv.writer(csvfile)
-                writer.writerow([self.msgGPS.latitude, self.msgGPS.longitude, yaw_rad]) 
+                # writer.writerow([self.msgGPS.latitude, self.msgGPS.longitude, yaw_rad]) 
+                writer.writerow([self.msgOdom.x, self.msgOdom.y, yaw_rad]) 
             # np.save(file_path + "poseXYT/" + str(self.timestampSecs%1000)+'-'+str(int(self.timestampNSecs/1e6)), np.array([self.msgGPS.latitude, self.msgGPS.longitude, yaw_rad]))
             with open(file_path + 'index_timestamp.csv', 'a') as fp: # or w
                 writer = csv.writer(fp)
@@ -112,8 +113,8 @@ if __name__ == "__main__":
     subDepth = rospy.Subscriber("/camera/depth/image_rect_raw", Image, cbDepth)
     subColor = rospy.Subscriber("/camera/color/image_raw", Image, cbColor)
     subIMU = rospy.Subscriber("/imu_filter/rpy/filtered", Vector3Stamped, cbIMU)
-    subGPS = rospy.Subscriber("/outdoor_waypoint_nav/gps/filtered", NavSatFix, cbGPS)
-    # subOdom = rospy.Subscriber("/outdoor_waypoint_nav/odometry/filtered_map", Odometry, cbOdom)
+    # subGPS = rospy.Subscriber("/outdoor_waypoint_nav/gps/filtered", NavSatFix, cbGPS)
+    subOdom = rospy.Subscriber("/outdoor_waypoint_nav/odometry/filtered_map", Odometry, cbOdom)
 
     print("successfully initialized!")
     
