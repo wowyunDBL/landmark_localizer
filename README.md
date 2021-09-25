@@ -22,10 +22,15 @@ $ sudo echo "192.168.0.101 ${ROS_MASTER_NAME}" >> /etc/hosts
 ## Seup Software
 ```sh
 $ pip install -r requirements.txt
+$ sudo apt install python-pip
+```
+
+## Execution
+```sh
 $ bash ./demo.sh
 ```
 
-## rosbag filter
+## rosbag filter (for those who don't need RGBD image)
 rosbag filter ChiaY_outerHalf_2021-08-17-17-17-10.bag lighter_ChiaY_outerHalf_2021-08-17-17-17-10.bag "topic=='/imu_filter/rpy/filtered' or topic=='/outdoor_waypoint_nav/odometry/filtered_map' or topic=='/outdoor_waypoint_nav/odometry/filtered' or topic=='/tf'"
 
 

@@ -66,8 +66,8 @@ class Synchronize:
             self.imgColor = msg2CV(self.msgColor)
             self.imgDepth = msg2CV(self.msgDepth)
             
-            np.save(file_path + "depth/" + str(self.file_index), self.imgDepth) # 1tree, 2tree, 2trees
-            np.save(file_path + "color/" + str(self.file_index), self.imgColor)
+            # np.save(file_path + "depth/" + str(self.file_index), self.imgDepth) # 1tree, 2tree, 2trees
+            # np.save(file_path + "color/" + str(self.file_index), self.imgColor)
             
             yaw_rad = self.msgIMU/180*np.pi
             with open(file_path + 'cb_pose.csv', 'a') as csvfile: # or w
@@ -114,7 +114,7 @@ if __name__ == "__main__":
     subColor = rospy.Subscriber("/camera/color/image_raw", Image, cbColor)
     subIMU = rospy.Subscriber("/imu_filter/rpy/filtered", Vector3Stamped, cbIMU)
     # subGPS = rospy.Subscriber("/outdoor_waypoint_nav/gps/filtered", NavSatFix, cbGPS)
-    subOdom = rospy.Subscriber("/outdoor_waypoint_nav/odometry/filtered_map", Odometry, cbOdom)
+    subOdom = rospy.Subscriber("/outdoor_waypoint_nav/odometry/filtered", Odometry, cbOdom)
 
     print("successfully initialized!")
     
